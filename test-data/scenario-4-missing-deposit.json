@@ -1,0 +1,42 @@
+{
+  "scenario": "Missing Deposit - Driver collected cash 60 hours ago, no deposit found",
+  "orders": [
+    {
+      "order_id": "ORD-2024-020",
+      "customer_id": "CUST-20001",
+      "expected_amount": 2200.0,
+      "currency": "KES",
+      "order_created_at": "2024-07-13T08:00:00Z",
+      "assigned_driver_id": "DRV-047",
+      "status": "DELIVERED_CASH_PENDING",
+      "region": "Kenya"
+    }
+  ],
+  "collections": [
+    {
+      "collection_id": "COL-2024-020",
+      "driver_id": "DRV-047",
+      "driver_name": "Brian Otieno",
+      "order_ids": ["ORD-2024-020"],
+      "collected_amount": 2200.0,
+      "currency": "KES",
+      "collection_timestamp": "2024-07-13T10:00:00Z",
+      "reference_code": "KBX-9020",
+      "notes": "Cash collected successfully"
+    }
+  ],
+  "deposits": [],
+  "expected_result": {
+    "match_quality": "UNMATCHED",
+    "status": "PENDING_REVIEW",
+    "discrepancies": [
+      {
+        "type": "MISSING_DEPOSIT",
+        "severity": "HIGH",
+        "hours_elapsed": 60,
+        "description": "Collection COL-2024-020 for 2,200 KES has no matching deposit after 60 hours",
+        "suggested_action": "Contact driver DRV-047. Cash collected 60 hours ago with no deposit."
+      }
+    ]
+  }
+}

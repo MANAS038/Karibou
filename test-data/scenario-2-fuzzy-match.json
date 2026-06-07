@@ -1,0 +1,65 @@
+{
+  "scenario": "Fuzzy Match - Typo in reference code + 50 KES shortfall (change shortage)",
+  "orders": [
+    {
+      "order_id": "ORD-2024-002",
+      "customer_id": "CUST-56790",
+      "customer_name": "John Kamau",
+      "customer_phone": "+254723456789",
+      "expected_amount": 1500.0,
+      "currency": "KES",
+      "order_created_at": "2024-07-15T09:00:00Z",
+      "delivery_address": "Karen, Nairobi",
+      "assigned_driver_id": "DRV-047",
+      "status": "DELIVERED_CASH_PENDING",
+      "region": "Kenya"
+    }
+  ],
+  "collections": [
+    {
+      "collection_id": "COL-2024-002",
+      "driver_id": "DRV-047",
+      "driver_name": "Brian Otieno",
+      "order_ids": ["ORD-2024-002"],
+      "collected_amount": 1500.0,
+      "currency": "KES",
+      "collection_timestamp": "2024-07-15T14:30:00Z",
+      "reference_code": "KBX-9002",
+      "notes": "Customer paid 1500 KES"
+    }
+  ],
+  "deposits": [
+    {
+      "deposit_id": "DEP-2024-002",
+      "agent_id": "AGT-239",
+      "agent_name": "Equity Bank – Westlands Branch",
+      "agent_location": "Westlands, Nairobi",
+      "agent_type": "BANK_BRANCH",
+      "driver_id": "DRV-047",
+      "reference_code": "KBX-9020",
+      "deposited_amount": 1450.0,
+      "currency": "KES",
+      "deposit_timestamp": "2024-07-15T17:30:00Z",
+      "receipt_number": "RCP-EQ-20240715-8824",
+      "notes": "Driver deposited 1450 KES"
+    }
+  ],
+  "expected_result": {
+    "match_quality": "PROBABLE_MATCH",
+    "confidence_score": 0.79,
+    "status": "AUTO_RECONCILED",
+    "discrepancies": [
+      {
+        "type": "AMOUNT_MISMATCH",
+        "severity": "MEDIUM",
+        "amount_gap": 50.0,
+        "description": "Deposited amount (1,450 KES) is 50 KES less than collected amount (1,500 KES)"
+      },
+      {
+        "type": "REFERENCE_CODE_MISMATCH",
+        "severity": "LOW",
+        "description": "Reference code mismatch: collection 'KBX-9002' vs deposit 'KBX-9020' (edit distance: 2)"
+      }
+    ]
+  }
+}

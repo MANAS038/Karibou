@@ -1,0 +1,32 @@
+{
+  "scenario": "Orphaned Deposit - Cash deposited at agent but cannot be linked to any order or collection",
+  "orders": [],
+  "collections": [],
+  "deposits": [
+    {
+      "deposit_id": "DEP-2024-030",
+      "agent_id": "AGT-239",
+      "agent_name": "Equity Bank – Westlands Branch",
+      "agent_location": "Westlands, Nairobi",
+      "agent_type": "BANK_BRANCH",
+      "reference_code": "",
+      "deposited_amount": 3400.0,
+      "currency": "KES",
+      "deposit_timestamp": "2024-07-15T16:00:00Z",
+      "receipt_number": "RCP-EQ-20240715-9999",
+      "notes": "No reference code provided"
+    }
+  ],
+  "expected_result": {
+    "match_quality": "UNMATCHED",
+    "status": "PENDING_REVIEW",
+    "discrepancies": [
+      {
+        "type": "ORPHANED_DEPOSIT",
+        "severity": "HIGH",
+        "description": "Deposit DEP-2024-030 for 3,400 KES at agent AGT-239 cannot be matched to any order or collection",
+        "suggested_action": "Review deposit DEP-2024-030 at agent AGT-239. Amount 3,400 KES cannot be tied to any order. Possible data entry error or ghost transaction."
+      }
+    ]
+  }
+}

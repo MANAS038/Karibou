@@ -1,0 +1,53 @@
+{
+  "scenario": "Exact Match - Perfect 1:1 match with all signals aligned",
+  "orders": [
+    {
+      "order_id": "ORD-2024-001",
+      "customer_id": "CUST-56789",
+      "customer_name": "Amara Njoroge",
+      "customer_phone": "+254712345678",
+      "expected_amount": 1500.0,
+      "currency": "KES",
+      "order_created_at": "2024-07-15T08:00:00Z",
+      "delivery_address": "Westlands, Nairobi",
+      "assigned_driver_id": "DRV-047",
+      "status": "DELIVERED_CASH_PENDING",
+      "region": "Kenya"
+    }
+  ],
+  "collections": [
+    {
+      "collection_id": "COL-2024-001",
+      "driver_id": "DRV-047",
+      "driver_name": "Brian Otieno",
+      "order_ids": ["ORD-2024-001"],
+      "collected_amount": 1500.0,
+      "currency": "KES",
+      "collection_timestamp": "2024-07-15T14:00:00Z",
+      "reference_code": "KBX-9001",
+      "gps_location": "-1.2921,36.8219",
+      "notes": "Customer paid exact amount"
+    }
+  ],
+  "deposits": [
+    {
+      "deposit_id": "DEP-2024-001",
+      "agent_id": "AGT-239",
+      "agent_name": "Equity Bank – Westlands Branch",
+      "agent_location": "Westlands, Nairobi",
+      "agent_type": "BANK_BRANCH",
+      "driver_id": "DRV-047",
+      "reference_code": "KBX-9001",
+      "deposited_amount": 1500.0,
+      "currency": "KES",
+      "deposit_timestamp": "2024-07-15T17:00:00Z",
+      "receipt_number": "RCP-EQ-20240715-8823"
+    }
+  ],
+  "expected_result": {
+    "match_quality": "EXACT_MATCH",
+    "confidence_score": 1.0,
+    "status": "AUTO_RECONCILED",
+    "discrepancies": []
+  }
+}

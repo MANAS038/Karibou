@@ -1,0 +1,76 @@
+{
+  "scenario": "Multi-Currency Support - Orders in different currencies (KES, UGX, TZS)",
+  "orders": [
+    {
+      "order_id": "ORD-2024-100",
+      "customer_id": "CUST-UG-001",
+      "expected_amount": 50000.0,
+      "currency": "UGX",
+      "order_created_at": "2024-07-15T08:00:00Z",
+      "assigned_driver_id": "DRV-201",
+      "status": "DELIVERED_CASH_PENDING",
+      "region": "Uganda"
+    },
+    {
+      "order_id": "ORD-2024-101",
+      "customer_id": "CUST-TZ-001",
+      "expected_amount": 35000.0,
+      "currency": "TZS",
+      "order_created_at": "2024-07-15T09:00:00Z",
+      "assigned_driver_id": "DRV-301",
+      "status": "DELIVERED_CASH_PENDING",
+      "region": "Tanzania"
+    }
+  ],
+  "collections": [
+    {
+      "collection_id": "COL-2024-100",
+      "driver_id": "DRV-201",
+      "order_ids": ["ORD-2024-100"],
+      "collected_amount": 50000.0,
+      "currency": "UGX",
+      "collection_timestamp": "2024-07-15T14:00:00Z",
+      "reference_code": "KBX-UG-100"
+    },
+    {
+      "collection_id": "COL-2024-101",
+      "driver_id": "DRV-301",
+      "order_ids": ["ORD-2024-101"],
+      "collected_amount": 35000.0,
+      "currency": "TZS",
+      "collection_timestamp": "2024-07-15T15:00:00Z",
+      "reference_code": "KBX-TZ-100"
+    }
+  ],
+  "deposits": [
+    {
+      "deposit_id": "DEP-2024-100",
+      "agent_id": "AGT-UG-001",
+      "driver_id": "DRV-201",
+      "reference_code": "KBX-UG-100",
+      "deposited_amount": 48000.0,
+      "currency": "UGX",
+      "deposit_timestamp": "2024-07-15T17:00:00Z"
+    },
+    {
+      "deposit_id": "DEP-2024-101",
+      "agent_id": "AGT-TZ-001",
+      "driver_id": "DRV-301",
+      "reference_code": "KBX-TZ-100",
+      "deposited_amount": 33500.0,
+      "currency": "TZS",
+      "deposit_timestamp": "2024-07-15T18:00:00Z"
+    }
+  ],
+  "expected_result": {
+    "note": "Tests currency-specific tolerances: UGX tolerance=2000, TZS tolerance=1500",
+    "ugx_match": {
+      "match_quality": "EXACT_MATCH",
+      "discrepancies": []
+    },
+    "tzs_match": {
+      "match_quality": "EXACT_MATCH",
+      "discrepancies": []
+    }
+  }
+}
